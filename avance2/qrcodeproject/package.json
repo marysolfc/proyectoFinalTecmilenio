@@ -1,0 +1,14 @@
+{
+  "name": "qrcodeproject",
+  "version": "1.0.0",
+  "description": "para el avance 2 sobre generación de códigos QR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marisol Flores Castro",
+  "license": "ISC",
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  }
+}
