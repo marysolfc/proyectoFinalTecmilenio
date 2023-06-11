@@ -1,10 +1,10 @@
-// llamada a modulos
+// llamada a módulos
 const express = require('express'); //para el servidor
 const path = require('path'); // para las rutas
 const exphbs = require('express-handlebars'); //para el motor de plantillas
 const methodOverride = require('method-override'); //para el envio del formulario no solo con get y post, también con put y delete
 const session = require('express-session'); // para el manejo de sesiones del usuario
-
+const flash = require('connect-flash');
 
 // inicializaciones
 const app = express();
@@ -36,10 +36,15 @@ app.use(session({
     resave: true,
     saveUninitialized: true 
 }));
-
+app.use(flash()); //middleware para enviar mensajes
 
 // seccion de variables globales
-
+//variable global que almacena los mensajes
+app.use((req,res,next)=>{
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+})
 //sección de rutas, para las url en la carpeta routes
 app.use(require('./routes/index'));
 app.use(require('./routes/notes'));
