@@ -15,10 +15,13 @@
 </head>
 
 <body>
-    <p>Navigation</p>
-    <main class="container">
+    {{!-- aquí se incluye el partials de la Navegación --}}
+    {{>navigation}}
+    <main class="container p-4">
         {{!-- manda a llamar a un partial que contiene mensajes --}}
         {{>messages}}
+        {{!-- manda a llamar a un partial que contiene errores --}}
+        {{>errors}}
         {{{ body }}}
     </main>
 

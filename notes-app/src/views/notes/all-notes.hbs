@@ -1,3 +1,7 @@
+<div class="alert alert-primary" role="alert">
+  <h2>Notas de {{user.name}}</h2>
+</div>
+
 <div class="row">
     {{!-- arreglo de notas, se recorre con un each y se pinta una tarjeta por cada una --}}
     {{#each notes}}
@@ -8,12 +12,12 @@
                     {{title}} <a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a>
                 </h4>
                 <p>{{description}}</p>
-<form action="/notes/delete/{{_id}}?_method=DELETE" method="post">
-<input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-danger btn-block btn-sm" type="submit">
-                    Delete
-                </button>
-</form>
+                <form action="/notes/delete/{{_id}}?_method=DELETE" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger btn-block btn-sm" type="submit">
+                        Delete
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -21,9 +25,10 @@
     {{else}}
     <div class="card mx-auto">
         <div class="card-body">
+            <h1>Hello {{user.name}}</h1>
             <p class="lead">There are no notes yet!!</p>
             <a href="/notes/add" class="btn btn-success btn-block">
-            Create one!</a>
+                Create one!</a>
         </div>
     </div>
     {{/each}}

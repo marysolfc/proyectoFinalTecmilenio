@@ -1,12 +1,3 @@
-{{!-- arreglo de errores se recorre con un each y se pinta un alert por cada uno --}}
-{{#each errors}} 
-<div class="alert alert-danger alert-dismissible fade show" role="alert">  
-{{text}}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-{{/each}}
 <div class="col-md-4 mx-auto">
     <div class="card">
         <div class="card-header">
@@ -15,10 +6,10 @@
         <div class="card-body">
             <form action="/notes/new-note" method="post">
                 <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="Escribe título" autofocus>
+                    <input type="text" name="title" class="form-control" placeholder="Escribe título" autofocus value="{{title}}">
                 </div>
                 <div class="form-group">
-                    <textarea name="description" class="form-control" placeholder="Escribe descripción"></textarea>
+                    <textarea name="description" class="form-control" placeholder="Escribe descripción">{{description}}</textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">
