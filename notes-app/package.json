@@ -1,0 +1,25 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "Proyecto integral de NodeJS y MongoDB para una aplicación de login, registro, CRUD haciendo notas para usuarios",
+  "main": "index.js",
+  "scripts": {
+    "dev":"nodemon src/index.js" 
+  },
+  "author": "Marisol Flores Castro, replicado del curso de Fazt",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^7.2.3",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
