@@ -4,7 +4,7 @@
   "description": "Proyecto integral de NodeJS y MongoDB para una aplicación de login, registro, CRUD haciendo notas para usuarios",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon src/index.js" 
+    "dev": "nodemon src/index.js"
   },
   "author": "Marisol Flores Castro, replicado del curso de Fazt",
   "license": "ISC",
@@ -17,7 +17,8 @@
     "method-override": "^3.0.0",
     "mongoose": "^7.2.3",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "qrcode": "^1.5.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
