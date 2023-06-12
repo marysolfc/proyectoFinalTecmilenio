@@ -8,10 +8,10 @@ const { isAuthenticated } = require("../helpers/auth"); // para asegurar que el 
 router.get("/notes", isAuthenticated, async (req, res) => {
   //cuando se hace una consulta a los documentos con find(), por default son regresados como documentos de mongoose
   // con el método lean() los documentos se regresan como objetos planos
-  const notes = await Note.find({ user: req.user.id })
+  const notes = await Note.find({user_id: req.user._id.toString()})
     .lean()
     .sort({ date: "desc" }); // trae todos los documentos de la colección Notes, se agrega lean() porque había un error al mostrarlo en la vista
-  res.render("notes/all-notes", { notes }); //renderiza la vista all-notes y le pasa el objeto con los datos encontrados en la BD
+  res.render("notes/all-notes", {notes}); //renderiza la vista all-notes y le pasa el objeto con los datos encontrados en la BD
 });
 
 //ruta para agregar una nueva nota, se permite sólo si el usuario está logeado con isAuthenticated
@@ -42,13 +42,11 @@ router.post("/notes/new-note", isAuthenticated, async (req, res) => {
     });
   } else {
     const newNote = new Note({ title, description }); // se instancia un objeto de la clase Note
-    newNote.user = req.user.id; // obtener el id del usuario y guardarlo en la nota
-    console.log(newNote.user);
-
+    newNote.user_id = req.user._id.toString(); // obtener el id del usuario y guardarlo en la nota
+    
     // se guardan los datos en la base de Mongo con el metodo save de mongoose, toma algún tiempo y no se sabe cuanto
     // por lo que se realiza una petición asíncrona agregando await
-
-    //await newNote.save(); //esto toma algún tiempo de ejecución pero no bloquea el servidor
+    await newNote.save(); //esto toma algún tiempo de ejecución pero no bloquea el servidor
 
     // cuando termine la función asincrona, se envia el mensaje de exito
     req.flash("success_msg", "Note added successfully");

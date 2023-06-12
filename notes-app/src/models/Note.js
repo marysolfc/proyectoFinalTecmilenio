@@ -7,7 +7,7 @@ const NoteSchema = new Schema({
   title: { type: String, require: true }, //titulo de la nota
   description: { type: String, require: true }, //descripción de la nota
   date: { type: Date, default: Date.now }, // sea asigna un valor por default a la fecha con el atributo now
-  user: { type: String } //cada nota estará enlazada a un id de usuario
+  user_id: { type: String } //cada nota estará enlazada a un id de usuario
 });
 
 module.exports = mongoose.model("Note", NoteSchema);
