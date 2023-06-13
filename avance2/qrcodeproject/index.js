@@ -1,16 +1,19 @@
 // importar el modulo qrcode
-const QRCode = require('qrcode')
+const QRCode = require("qrcode");
 
-const QRGenerate = async text => {
-try{
-const qr = await QRCode.toString(text,{type: 'terminal'});
-console.log(qr);
-} catch(err){
-console.log(err)
-}
+//Se define la función asíncrona para generar el código QR con el parámetro text
+const QRGenerate = async (text) => {
+  try {
+    // se genera el código y se muestra en terminal con la función toString
+    const qr = await QRCode.toString(text, { type: "terminal" });
+    console.log(qr);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-QRGenerate('México');
+QRGenerate("México");
+
 /*
 var qrcode = new QRCode("qrcode");
 
