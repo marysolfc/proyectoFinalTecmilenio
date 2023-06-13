@@ -1,6 +1,6 @@
 const express = require('express') // se requiere el servidor para llamar a router
 const router = express.Router(); // se usa el método router para crear las rutas
-const qr = require('../helpers/qrgen');
+const QRGenerate = require('../helpers/qrgen');
 //import {renderIndex, renderAbout} from "../controllers/index.controller";
 //const renderIndex = require("../controllers/index.controller");
 //const renderAbout = require("../controllers/index.controller");
@@ -19,10 +19,10 @@ router.get('/qrgenerator', (req,res) => {
 
 router.post('/qrgenerator', (req,res) => {      
     const {word} = req.body;
-    qr.QRGenerate(word);  
+    QRGenerate(word);  
     res.send('Ok');
-    //res.redirect('/users/signin');
-    //res.render('qrgenerator');
+
+
 });
 //router.get("/", renderIndex);
 //router.get("/about", renderAbout);

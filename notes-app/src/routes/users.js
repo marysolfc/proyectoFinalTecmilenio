@@ -4,6 +4,8 @@ const router = express.Router(); // se usa el método router para crear las ruta
 const User = require('../models/User'); // se importa el modelo de datos
 const passport = require('passport'); // importa los metodos de autenticacion
 
+const sendMail = require('../helpers/mailsender')
+
 // rutas del usuario
 // ruta para el login del usuario
 router.get('/users/signin',(req,res) => {
@@ -47,7 +49,8 @@ router.post('/users/signup',async (req,res) => {
         const newUser = new User({name,email,password}); // se crea la instancia de un objeto usuario
         newUser.password = await newUser.encryptPassword(password); // se cifra la contraseña antes de guardar los datos
         await newUser.save(); // se guardan los datos del usuario
-        req.flash('success_msg','You have registered successfully');
+        sendMail(name,email);
+        req.flash('success_msg',`Gracias por registrarse, se ha envíado un correo de confirmación a ${email}`);
         res.redirect('/users/signin'); //ya que se registró se redirige a la pantalla de login
     }
 });
